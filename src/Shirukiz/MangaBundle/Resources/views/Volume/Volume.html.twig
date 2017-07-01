@@ -1,0 +1,80 @@
+
+{% extends "ShirukizMangaBundle::layout.html.twig" %}
+{% block header %}
+    {% if livre.imageBanniere != null %}
+        <header style="background-image: url(../../uploads/img/{{livre.imageBanniere.url}})">
+            <a href="{{ path('shirukiz_manga_imgBan',{'id': livre.id })}}"><img src="../../bundles/img/Image.png" alt="Modifier" id="Logo"/></h1></a>
+       
+        {% block title %}
+        {% endblock %}
+        
+        </header>
+    {% else %}
+        <a href="{{ path('shirukiz_manga_imgBan',{'id': livre.id })}}"><img src="../../bundles/img/Image.png" alt="Modifier" id="Logo"/></h1></a>
+    {% endif %}
+     
+    {% endblock %} 
+{% block body %}
+    <h1>{{ livre.nom }}</h1></a>
+    <table id="Presentation">
+        <tr>
+            <th>Présentation<a href="{{ path('shirukiz_manga_modifier',{'id': livre.id })}}"><img src="../../bundles/img/Modifier.png" alt="Modifier" id="Logo"/></th>
+        </tr>
+        <tr>
+            <td><b>Description : </b></br>{{ livre.description }}</td>
+        </tr>
+        <tr>
+            <td><b>Genre : </b>{{ livre.genre }}</td>
+        </tr>
+        <tr>
+            <td><b>Auteur : </b>{{ livre.auteur }}</td>
+        </tr>
+        <tr>
+            <td><b>Statut : </b>{{ livre.statut }} ( {{ livre.nbVolume }} )</td>
+        </tr>
+    </table>
+        <table id="Contenu">
+            <tr><th>Volumes</th></tr>
+            <tr><td>
+    <div class="count">
+    Nombre total de volumes : {{ paginator.getTotalItemCount }}
+</div>                
+    {% for volume in paginator %}
+        
+        <table id="Volume">
+            <tr>
+                {% if volume.possession == 1 %}
+                <td><img src="../../uploads/img/{{volume.image.url}}" alt="Volume" /></td> 
+                {% else %}
+                <td><img src="../../uploads/img/{{volume.image.url}}" alt="Volume" id="NonPo"/>
+                </td> 
+                {% endif %}
+            </tr>
+            <tr>
+                <td>{{ volume.Volume }}</td>
+            </tr>
+        </table>
+       
+   {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td><div class="navigation" style="float:right">
+                        {{ knp_pagination_render(paginator) }}
+                    </div></td>
+            </tr>
+        </table>
+
+        <table id="VolumeAjout">
+            <tr>
+                <th>Ajouter un volume</th>
+            </tr>
+            <tr>
+                <td>{{ form(form) }}</td>
+            </tr>
+        </table>
+                    
+    
+    
+{% endblock %}
+
