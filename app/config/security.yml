@@ -1,0 +1,44 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Shirukiz\UserBundle\Entity\User: sha512
+        
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        main:
+            id: fos_user.user_provider.username
+            
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern:        ^/
+            anonymous:      true
+            provider:       main
+            form_login:
+                login_path: fos_user_security_login
+                default_target_path: /
+            logout:
+                path:       fos_user_security_logout
+                target:     /
+            remember_me:
+                secret:    %secret%
+            
+            
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/Manga, roles: ROLE_USER } 
+        - { path: ^/Accueil, roles: ROLE_USER }
+        - { path: ^/register, roles: ROLE_USER }
+        - { path: ^/profile, roles: ROLE_USER }
+            # activate different ways to authenticate
+
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            #form_login: ~

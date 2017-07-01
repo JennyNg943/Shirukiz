@@ -1,0 +1,45 @@
+{# src/Shirukiz/MangaBundle/Resources/views/Manga/MangaCollection.html.twig #}
+{% extends "ShirukizMangaBundle::layout.html.twig" %}
+
+{% block body %}
+    
+    <nav id='MenuPlus'>
+        {{ include("ShirukizMangaBundle:Manga:MenuPlus.html.twig") }}
+    </nav>
+        <table id="Collection">
+            {% for statut in listestatut %}
+                <tr><th style='background-color:rgb(195,195,195);color:white;'>{{ statut.nom }}</th>
+                </tr>
+                <tr>
+                    <td>
+                {% for manga in listemanga %}
+                    {% if manga.statut == statut.nom %}
+                        <table  id="Manga">
+                        <tr>
+                            <th COLSPAN="2"><a href="{{ path('shirukiz_manga_img',{'id': manga.id })}}"><img src="../bundles/img/Image.png" alt="Modifier" id="Logo" style="float:left"/></h1></a>{{ manga.nom }}<a href="{{ path('shirukiz_manga_modifier',{'id': manga.id })}}"><img src="../bundles/img/Modifier.png" alt="Modifier" id="Logo"/></th>
+                        </tr>
+
+                        <tr>
+
+                            <td COLSPAN="2">
+                                <a href="{{ path('shirukiz_manga_volume',{'id': manga.id })}}"><img src="../uploads/img/{{manga.image.url}}" alt="Manga" /> </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{ manga.auteur }}</td>
+                            <td>{{ manga.statut }}</td>
+                        </tr>
+                        </table>
+                    {% endif %}
+                {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+    
+    
+    
+{% endblock %}
+

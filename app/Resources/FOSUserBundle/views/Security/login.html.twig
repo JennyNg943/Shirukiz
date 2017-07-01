@@ -1,0 +1,10 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div>
+        {{ include('@FOSUser/Security/login_content.html.twig') }}
+    </div>
+    <div>
+        <a href="{{ path('fos_user_resetting_request') }}" style="font-size: 100%">Mot de passe oublié ?</a>
+    </div>
+{% endblock fos_user_content %}

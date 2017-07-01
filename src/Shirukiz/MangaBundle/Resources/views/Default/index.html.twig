@@ -1,0 +1,34 @@
+{# src/Shirukiz/MangaBundle/Resources/views/Default/index.html.twig #}
+
+
+{% extends "ShirukizMangaBundle::layout.html.twig" %}
+
+{% block title %}
+    Shirukiz - Collection
+{% endblock %}
+
+{% block body %}
+    <table id="Accueil">
+        <tr>
+            <th COLSPAN="5">Dernier mangas achetés !</th>
+        </tr>
+        <tr>
+            {% for l in livre %}
+                <td><img src="../uploads/img/{{l.image.url}}" alt="Volume" />
+                </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <table id="Accueil">
+        <tr>
+            <th COLSPAN="5">Dernier jeux achetés !</th>
+        </tr>
+        <tr>
+            {% for j in jeux %}
+                <td><img src="../uploads/img/{{j.image.url}}" alt="Volume" /></td>
+            {% endfor %}
+        </tr>
+    </table>
+    
+{% endblock %}
+

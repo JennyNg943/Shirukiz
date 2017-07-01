@@ -1,0 +1,44 @@
+{# src/OC/UserBundle/Resources/views/layout.html.twig #}
+
+{# On étend notre layout #}
+
+{# Dans notre layout, il faut définir le block body #}
+<head>
+    {% stylesheets 'bundles/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+</head>
+<body>
+    <div id="Connexion">
+{% block body %}
+
+
+  {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+
+  {% for key, message in app.session.flashbag.all() %}
+
+    <div class="alert alert-{{ key }}">
+
+      {{ message|trans({}, 'FOSUserBundle') }}
+
+    </div>
+
+  {% endfor %}
+
+
+  {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+
+  {% block fos_user_content %}
+
+  {% endblock fos_user_content %}
+  
+  
+{% endblock %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <a href="{{ path('shirukiz_manga_accueil') }}" style="font-size: 100%">Aller sur le site</a>
+    {% endif %}
+    </div>
+{% image 'bundles/img/background2.jpg' %}
+    <img src="{{ asset_url }}" alt="Example" id="Logo" style="float:right; width: 30%; margin: 2%;margin-right: 10%;"/>
+{% endimage %}
+</body>

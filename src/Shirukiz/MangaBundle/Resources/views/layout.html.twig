@@ -1,0 +1,28 @@
+{# src/Shirukiz/MangaBundle/Resources/views/layout.html.twig #}
+<head>
+    
+    {% stylesheets 'bundles/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+    
+</head>
+<body>
+    {% block header %}
+        <header>
+        {% block title %}
+        {% endblock %}
+        
+        </header>
+    {% endblock %}    
+    <section>
+        {{ include("ShirukizMangaBundle:Default:menu.html.twig") }}
+    
+    {% block body %}
+
+
+    {% endblock %}
+    </section>
+    {% javascripts 'bundles/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+</body>

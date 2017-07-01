@@ -1,0 +1,31 @@
+shirukiz_manga_homepage:
+    path:     /
+    defaults: { _controller: ShirukizMangaBundle:Default:index }
+
+shirukiz_manga_collection:
+    path:     /Manga
+    defaults: { _controller: ShirukizMangaBundle:Manga:MangaCollection }
+    
+shirukiz_manga_ajout:
+    path:     /Manga/Ajout
+    defaults: { _controller: ShirukizMangaBundle:Manga:MangaAjout }
+
+shirukiz_manga_modifier:
+    path:     /Manga/Modif/{id}
+    defaults: { _controller: ShirukizMangaBundle:Manga:MangaModifier }  
+  
+shirukiz_manga_volume:
+    path:      /Manga/{id}
+    defaults: { _controller: ShirukizMangaBundle:Manga:MangaVolume }
+    
+shirukiz_manga_imgBan:
+    path:      /Manga/Banniere/{id}
+    defaults: { _controller: ShirukizMangaBundle:Manga:MangaBanniere }
+    
+shirukiz_manga_img:
+    path:      /Manga/Image/{id}
+    defaults: { _controller: ShirukizMangaBundle:Manga:MangaImage }
+    
+volume_ajout:
+    path:      /Manga/Volume/{id}
+    defaults: { _controller: ShirukizMangaBundle:Manga:VolumeAjout }

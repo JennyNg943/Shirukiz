@@ -1,0 +1,34 @@
+
+{% extends "ShirukizMangaBundle::layout.html.twig" %}
+
+{% block body %}
+    
+    <nav id='MenuPlus'>
+        <ul>
+            <li><a href="{{path('shirukiz_jeux_ajout')}}">Ajouter un jeux</a></li>
+            <li><a href="{{path('shirukiz_jeux_ajout')}}">Ajouter une plateforme</a></li>
+        </ul>
+    </nav>
+        <table id="Collection">
+            {% for plateform in listePlateforme %}
+            <tr>
+                <th style='background-color: rgb(1,114,190);color:white;'>{{ plateform.nom }}</th>
+            </tr>
+            <tr><td>
+            {% for jeux in listejeux %}
+                {% if jeux.plateforme == plateform.nom %}
+                    {{ include("ShirukizJeuxVideoBundle:Jeux:AffichageJeux.html.twig") }}
+                {% endif %} 
+               
+            {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+    
+    
+    
+{% endblock %}
+

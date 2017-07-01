@@ -1,0 +1,7 @@
+shirukiz_figurine_collection:
+    path:     /Figurine
+    defaults: { _controller: ShirukizFigurineBundle:Figurine:index }
+    
+shirukiz_figurine_ajout:
+    path:     /Figurine/Ajout
+    defaults: { _controller: ShirukizFigurineBundle:Figurine:ajout }
