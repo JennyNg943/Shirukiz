@@ -3,28 +3,18 @@
 
 {% block body %}
     
-    <nav id='MenuPlus'>
-        <ul>
-            <li><a href="{{path('shirukiz_jeux_ajout')}}">Ajouter un jeux</a></li>
-            <li><a href="{{path('shirukiz_jeux_ajout')}}">Ajouter une plateforme</a></li>
-        </ul>
-    </nav>
-        <table id="Collection">
+       <div id="Accueil">
             {% for plateform in listePlateforme %}
-            <tr>
-                <th style='background-color: rgb(1,114,190);color:white;'>{{ plateform.nom }}</th>
-            </tr>
-            <tr><td>
+            <h1>{{ plateform.nom }}</h1>
             {% for jeux in listejeux %}
                 {% if jeux.plateforme == plateform.nom %}
                     {{ include("ShirukizJeuxVideoBundle:Jeux:AffichageJeux.html.twig") }}
                 {% endif %} 
                
             {% endfor %}
-                </td>
-            </tr>
+                
             {% endfor %}
-        </table>
+        </div>
 
 
     

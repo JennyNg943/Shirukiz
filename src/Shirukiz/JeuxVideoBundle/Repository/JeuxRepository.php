@@ -20,8 +20,17 @@ class JeuxRepository extends \Doctrine\ORM\EntityRepository
     function getJeuxA(){
         $qb = $this->createQueryBuilder('a');
         $qb->orderBy('a.date','DESC')
-                ->setMaxResults(5);
+                ->setMaxResults(6);
         
         return $qb->getQuery()->getResult();
+    }
+    
+    function getRecherche($r){
+        $r = "%".$r."%";
+        $qb = $this->createQueryBuilder('a');
+        $qb
+                ->where('a.nom LIKE :r ')
+                ->setParameter('r', $r);
+        return $qb->getQuery()->getResult();        
     }
 }

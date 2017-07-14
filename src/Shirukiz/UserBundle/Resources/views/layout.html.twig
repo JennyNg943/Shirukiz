@@ -35,10 +35,10 @@
   
 {% endblock %}
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <a href="{{ path('shirukiz_manga_accueil') }}" style="font-size: 100%">Aller sur le site</a>
+        <a href="{{ path('shirukiz_manga_homepage') }}" style="font-size: 100%">Aller sur le site</a>
     {% endif %}
     </div>
-{% image 'bundles/img/background2.jpg' %}
+{% image 'bundles/img/background2.png' %}
     <img src="{{ asset_url }}" alt="Example" id="Logo" style="float:right; width: 30%; margin: 2%;margin-right: 10%;"/>
 {% endimage %}
 </body>

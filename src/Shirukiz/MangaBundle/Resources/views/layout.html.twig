@@ -6,7 +6,8 @@
     {% endstylesheets %}
     
 </head>
-<body>
+<body id="Site">
+    {{ include("ShirukizMangaBundle:Default:menu.html.twig") }}
     {% block header %}
         <header>
         {% block title %}
@@ -15,14 +16,35 @@
         </header>
     {% endblock %}    
     <section>
-        {{ include("ShirukizMangaBundle:Default:menu.html.twig") }}
-    
+        
+    <nav id='MenuPlus'>
+        <div id="MenuDroit">
+            <h1>MANGA</h1>
+            <ul>
+                <li><a href="{{path('shirukiz_manga_ajout')}}">Ajouter un manga</a></li>
+            </ul>
+        </div>
+            {{ render(controller("ShirukizMangaBundle:Manga:VolumeMenuAjout")) }}
+        <div id="MenuDroit">
+            <h1>JEUX</h1>
+            <ul>
+                <li><a href="{{path('shirukiz_jeux_ajout')}}">Ajouter une plateforme</a></li>
+            </ul>
+        </div>
+        
+        {{ render(controller("ShirukizJeuxVideoBundle:JeuxVideo:ajout")) }}
+        {{ render(controller("ShirukizFigurineBundle:Figurine:ajout")) }}
+        {{ render(controller("ShirukizMangaBundle:Default:Utilisateur")) }}
+        
+    </nav>
+    <div id="page">
     {% block body %}
 
 
     {% endblock %}
+    </div>
     </section>
-    {% javascripts 'bundles/js/*' %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>

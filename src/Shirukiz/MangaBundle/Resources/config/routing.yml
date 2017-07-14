@@ -29,3 +29,10 @@ shirukiz_manga_img:
 volume_ajout:
     path:      /Manga/Volume/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:VolumeAjout }
+    
+volumeSupp:    
+    path:      /Manga/Volume/Supp/{id}
+    defaults: { _controller: ShirukizMangaBundle:Manga:VolumeSupp }
+recherche:
+    path:      /Recherche
+    defaults: { _controller: ShirukizMangaBundle:Default:recherche }

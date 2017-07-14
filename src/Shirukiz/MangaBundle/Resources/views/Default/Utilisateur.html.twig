@@ -1,0 +1,10 @@
+<div id="MenuDroit">
+    <h1>Utilisateur</h1>
+    <div> 
+        <ul>
+        {% for u in utilisateur %}
+            <li>{{ u.username }}</li>
+        {% endfor %}
+        </ul>
+    </div>  
+</div>

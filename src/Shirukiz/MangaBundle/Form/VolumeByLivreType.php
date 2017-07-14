@@ -23,7 +23,11 @@ class VolumeByLivreType extends AbstractType
         ->add('idLivre',        EntityType::class,array(
                 'label'=>'Serie',
                 'class'=>'ShirukizMangaBundle:Livre',
-                'choice_label'=>'nom'))
+                'choice_label'=>'nom',
+                'query_builder' => function (\Shirukiz\MangaBundle\Repository\MangaRepository $er) {
+            return $er->createQueryBuilder('u')
+                    ->orderBy('u.nom', 'ASC');},
+                'placeholder'   => ''        ))
         ->add('Volume',         TextType::class)
         ->add('Image',          ImageType::class)
         ->add('possession',     ChoiceType::class,array(

@@ -2,40 +2,35 @@
 {% extends "ShirukizMangaBundle::layout.html.twig" %}
 
 {% block body %}
-    
-    <nav id='MenuPlus'>
-        {{ include("ShirukizMangaBundle:Manga:MenuPlus.html.twig") }}
-    </nav>
-        <table id="Collection">
-            {% for statut in listestatut %}
-                <tr><th style='background-color:rgb(195,195,195);color:white;'>{{ statut.nom }}</th>
-                </tr>
+    {% for statut in listestatut %}
+        <div id="Accueil">
+            <h1>{{ statut.nom }}</h1>
+        {% for manga in listemanga %}
+            {% if manga.statut == statut.nom %}
+                <table  id="Manga">
                 <tr>
-                    <td>
-                {% for manga in listemanga %}
-                    {% if manga.statut == statut.nom %}
-                        <table  id="Manga">
-                        <tr>
-                            <th COLSPAN="2"><a href="{{ path('shirukiz_manga_img',{'id': manga.id })}}"><img src="../bundles/img/Image.png" alt="Modifier" id="Logo" style="float:left"/></h1></a>{{ manga.nom }}<a href="{{ path('shirukiz_manga_modifier',{'id': manga.id })}}"><img src="../bundles/img/Modifier.png" alt="Modifier" id="Logo"/></th>
-                        </tr>
 
-                        <tr>
-
-                            <td COLSPAN="2">
-                                <a href="{{ path('shirukiz_manga_volume',{'id': manga.id })}}"><img src="../uploads/img/{{manga.image.url}}" alt="Manga" /> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{{ manga.auteur }}</td>
-                            <td>{{ manga.statut }}</td>
-                        </tr>
-                        </table>
-                    {% endif %}
-                {% endfor %}
+                    <td COLSPAN="2">
+                        <a href="{{ path('shirukiz_manga_volume',{'id': manga.id })}}"><img src="../uploads/img/{{manga.image.url}}" alt="Manga" /> </a>
                     </td>
                 </tr>
-            {% endfor %}
-        </table>
+                <tr>
+                    {% if manga.statut.id == 1 %}
+                        <td style='background:green;width: 2%;color:white;'>
+                    {% else %}        
+                        <td style='background:red;width: 2%;color:white;'>  
+                    {% endif %}
+                        {{ render(controller("ShirukizMangaBundle:Manga:VolumePo",{ 'id': manga.id })) }} / {{ manga.nbVolume }}
+                    </td>
+                    <td><a href="{{ path('shirukiz_manga_img',{'id': manga.id })}}"><img src="../bundles/img/Image.png" alt="Modifier" id="Logo" style="float:left;width: 5%;"/></h1></a>{{ manga.nom }}<a href="{{ path('shirukiz_manga_modifier',{'id': manga.id })}}"><img src="../bundles/img/Modifier.png" alt="Modifier" style="width: 5%;float: right;"/></td>
+                </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+</div>
 
 
     

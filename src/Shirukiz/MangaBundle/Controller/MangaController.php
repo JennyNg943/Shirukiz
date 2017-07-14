@@ -11,6 +11,7 @@ use Shirukiz\MangaBundle\Entity\Volume;
 use Shirukiz\MangaBundle\Form\MangaModifType;
 use Shirukiz\MangaBundle\Form\MangaImgBanType;
 use Shirukiz\MangaBundle\Form\MangaImgType;
+use Symfony\Component\HttpFoundation\Response;
 
 class MangaController extends Controller
 {
@@ -44,25 +45,15 @@ class MangaController extends Controller
     public function MangaVolumeAction(Request $request,$id){
         $repository = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Livre');
         $livre = $repository->find($id);
-        $volume = new Volume();
-        $volume->setIdLivre($livre);
-        $form = $this->createForm(VolumeByLivreType::class,$volume);
         
-        
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $volume->getImage()->upload();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($volume);
-            $em->flush();
-        }
         $listeVolume = $livre->getVolume();
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $listeVolume, /* query NOT result */
             $request->query->get('page', 1)/*page number*/,
-            12/*limit per page*/);
+            10/*limit per page*/);
         return $this->render('ShirukizMangaBundle:Volume:Volume.html.twig',array(
-            'form'=>$form->createView(),'livre'=>$livre,'paginator'=>$pagination));
+            'livre'=>$livre,'paginator'=>$pagination));
     }
     
     public function MangaModifierAction(Request $request,$id){
@@ -113,7 +104,7 @@ class MangaController extends Controller
     public function VolumeAjoutAction($id){
         $repository = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Volume');
         $volume = $repository->find($id);
-        $volume->setPossession("Oui");
+        $volume->setPossession(1);
         $volume->setDateAchat(new \DateTime('now'));
         $em = $this->getDoctrine()->getManager();
         $em->persist($volume);
@@ -121,5 +112,37 @@ class MangaController extends Controller
         
         $referer = $this->getRequest()->headers->get('referer');
         return $this->redirect($referer);
+    }
+    
+    public function VolumeSuppAction($id){
+        $repository = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Volume');
+        $volume = $repository->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($volume);
+        $em->flush();
+        
+        $referer = $this->getRequest()->headers->get('referer');
+        return $this->redirect($referer);
+    }
+    
+    public function VolumeMenuAjoutAction(Request $request){
+        $volume = new Volume();
+        $form = $this->createForm(VolumeByLivreType::class,$volume);
+        
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $volume->getImage()->upload();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($volume);
+            $em->flush();
+        }
+        
+        return $this->render('ShirukizMangaBundle:Default:AjoutVolume.html.twig',array('form'=>$form->createView()));
+    }
+    
+    public function VolumePoAction(Request $request,$id){
+        $repository = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Volume');
+        $volume = $repository->getVolumePo($id);
+        
+        return new Response($volume);
     }
 }

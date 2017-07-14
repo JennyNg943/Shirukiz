@@ -25,7 +25,7 @@ class MangaAjoutType extends AbstractType
   {
     $builder
         ->add('nom',        TextType::class,array('label'=>'Titre'))
-        ->add('auteur',     AuteurAjoutType::class,array('label'=>false))
+        ->add('auteur',     TextType::class,array('label'=>'Auteur'))
         ->add('genre',      EntityType::class,array(
                   'class'=>'ShirukizMangaBundle:Genre',
                   'choice_label'=>'nom'

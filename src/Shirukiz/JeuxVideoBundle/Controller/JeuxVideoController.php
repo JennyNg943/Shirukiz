@@ -31,7 +31,6 @@ class JeuxVideoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($jeux);
             $em->flush();
-            return $this->redirectToRoute('shirukiz_jeux_collection');
         }
         return $this->render('ShirukizJeuxVideoBundle:Jeux:JeuxAjout.html.twig',array('form'=>$form->createView()));
     }

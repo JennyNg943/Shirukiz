@@ -4,31 +4,24 @@
 {% extends "ShirukizMangaBundle::layout.html.twig" %}
 
 {% block title %}
-    Shirukiz - Collection
 {% endblock %}
 
 {% block body %}
-    <table id="Accueil">
-        <tr>
-            <th COLSPAN="5">Dernier mangas achetés !</th>
-        </tr>
-        <tr>
+    <div id="Accueil">
+        <h1>Dernier mangas achetés !</h1>
+        <div id="AccueilImg">
             {% for l in livre %}
-                <td><img src="../uploads/img/{{l.image.url}}" alt="Volume" />
-                </td>
+                <img src="../uploads/img/{{l.image.url}}" alt="Volume" />
             {% endfor %}
-        </tr>
-    </table>
-    <table id="Accueil">
-        <tr>
-            <th COLSPAN="5">Dernier jeux achetés !</th>
-        </tr>
-        <tr>
+        </div>
+    </div>
+    <div id="Accueil">
+        <h1>Dernier jeux achetés !</h1>
+        <div id="AccueilImg">
             {% for j in jeux %}
-                <td><img src="../uploads/img/{{j.image.url}}" alt="Volume" /></td>
+                <img src="../uploads/img/{{j.image.url}}" alt="Volume" />
             {% endfor %}
-        </tr>
-    </table>
-    
+        </div>
+    </div>    
 {% endblock %}
 

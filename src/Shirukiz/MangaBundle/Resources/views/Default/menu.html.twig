@@ -1,14 +1,25 @@
 <nav>
     <ul id="MenuPrincipal">
-        <li><a href="{{ path ('shirukiz_manga_homepage')}}">Accueil</a></li>
-        <li><a href="{{ path ('shirukiz_manga_collection')}}">Manga</a></li>
-        <li><a href="{{ path ('shirukiz_jeux_collection')}}">Jeux Video</a></li>
-        <li><a href="{{ path ('shirukiz_figurine_collection')}}">Figurine</a></li>
+        <li>Shirukiz</li>
+        <li class="dropdown"><a href="{{ path ('shirukiz_manga_homepage')}}">Accueil</a></li>
+        <li class="dropdown"><a href="{{ path ('shirukiz_manga_collection')}}">Manga</a></li>
+        <li class="dropdown"><a href="{{ path ('shirukiz_jeux_collection')}}">Jeux Video</a></li>
+        <li class="dropdown"><a href="{{ path ('shirukiz_figurine_collection')}}">Figurine</a></li>
         <li>Anime</li>
+        
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <li style="float:right;">    Yahalo {{ app.user.username }}
-            <a href="{{ path('fos_user_security_logout') }}" style="font-size: 100%">Déconnexion</a>
+        <li class="dropdown" style="float:right;">
+            <a href="javascript:void(0)" class="dropbtn">    Yahalo {{ app.user.username }}</a>
+            <div class="dropdown-content">
+                <a href="{{ path('fos_user_security_logout') }}" style="font-size: 100%">Déconnexion</a>
+            </div>    
         </li>
     {% endif %}
+        <li style="float:right; margin-top: 1%;">
+            <form action="{{ path('recherche') }}"method="GET">
+                <input type="text" name="recherche" />
+                <input type="submit" value="Valider" />
+            </form>
+        </li>
     </ul>
 </nav>

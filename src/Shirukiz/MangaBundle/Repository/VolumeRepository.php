@@ -13,11 +13,21 @@ class VolumeRepository extends \Doctrine\ORM\EntityRepository
     function getVolumeA(){
         $qb = $this->createQueryBuilder('a');
         $qb->orderBy('a.dateAchat','DESC')
-                ->setMaxResults(5)
+                ->setMaxResults(6)
                 ->andWhere('a.possession = :id')
                 ->setParameter('id', 1);
         
         return $qb->getQuery()->getResult();
     }
-
+    
+    function getVolumePo($id){
+        $qb = $this->createQueryBuilder('a');
+        $qb->select('count(a.id)')
+           ->where('a.idLivre = :id')
+           ->setParameter('id', $id)
+           ->andWhere('a.possession = :id2')
+           ->setParameter('id2', 1);
+        
+        return $qb->getQuery()->getSingleScalarResult();; 
+    }
 }
