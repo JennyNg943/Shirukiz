@@ -38,7 +38,8 @@
         "patchwork/jsqueeze": "~1.0",
         "friendsofsymfony/user-bundle": "dev-master",
         "knplabs/knp-paginator-bundle" : "dev-master",
-        "debril/rss-atom-bundle": "dev-master"
+        "debril/rss-atom-bundle": "dev-master",
+        "coresphere/console-bundle": "~0.4"
         
     },
     "require-dev": {

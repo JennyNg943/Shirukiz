@@ -1,11 +1,7 @@
 shirukiz_jeux_collection:
     path:     /JeuxVideo
     defaults: { _controller: ShirukizJeuxVideoBundle:JeuxVideo:index }
-    
-shirukiz_jeux_ajout: 
-    path:     /JeuxVideo/Ajout
-    defaults: { _controller: ShirukizJeuxVideoBundle:JeuxVideo:Ajout }
-    
-shirukiz_plateform_ajout: 
-    path:     /JeuxVideo/Plateforme/Ajout
-    defaults: { _controller: ShirukizJeuxVideoBundle:JeuxVideo:ajoutPlatforme }
+   
+jeuxSupp:
+    path:     /JeuxVideo/Supp/{id}
+    defaults: { _controller: ShirukizJeuxVideoBundle:JeuxVideo:delete }

@@ -1,26 +1,52 @@
 
-{% extends "ShirukizMangaBundle::layout.html.twig" %}
-
+{% extends "ShirukizMangaBundle::layout.html.twig" %}           
 {% block body %}
 
-        <table id="Collection">
-            <tr>
-                <th style='background-color: rgb(1,114,190);color:white;'>Collection</th>
-            </tr>
-            <tr><td>
+        <div id="Accueil">
+            <h1>Figurine<a  href="#modal1" id="test" class="modal-trigger">
+                <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+            </a></h1>
             {% for f in listefigurine %}
                 <table>
                     <tr><td><img src="../uploads/img/{{f.image.url}}" alt="Manga" /></td></tr>
                 </table>
                
             {% endfor %}
-                </td>
-            </tr>
-        </table>
+        </div>
 
+        <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h1>Ajouter un jeu !</h1>
+            {{ form(form)}}
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+        </div>
+      </div>
+    
+    <script type="text/javascript">
+        
+ (function ($) {
+    $(function () {
 
+        //initialize all modals           
+        $('.modal').modal();
+
+        //now you can open modal from code
+        
+
+        //or by click on trigger
+        $('.trigger-modal').modal();
+
+    }); // end of document ready
+})(jQuery);
+
+    $('#test').click(function() {
+        $('#modal1').modal('open');
+    });
     
-    
+   
+    </script> 
     
 {% endblock %}
 

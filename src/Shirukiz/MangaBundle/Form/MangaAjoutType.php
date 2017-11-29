@@ -28,15 +28,21 @@ class MangaAjoutType extends AbstractType
         ->add('auteur',     TextType::class,array('label'=>'Auteur'))
         ->add('genre',      EntityType::class,array(
                   'class'=>'ShirukizMangaBundle:Genre',
-                  'choice_label'=>'nom'
+                  'choice_label'=>'nom',
+                  'placeholder'=>''
             ))
         ->add('type',       EntityType::class,array(
                   'class'=>'ShirukizMangaBundle:Type',
-                  'choice_label'=>'nom'
+                  'choice_label'=>'nom',
+                  'placeholder'=>''
             ))
         ->add('editeur',    EntityType::class,array(
                   'class'=>'ShirukizMangaBundle:Editeur',
-                  'choice_label'=>'nom'
+                  'choice_label'=>'nom',
+                  'placeholder'=>'',
+                  'query_builder' => function (\Shirukiz\MangaBundle\Repository\EditeurRepository $er) {
+                return $er->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC');},
             ))
         ->add('Description',    TextareaType::class)
         ->add('nbVolume',   TextType::class)

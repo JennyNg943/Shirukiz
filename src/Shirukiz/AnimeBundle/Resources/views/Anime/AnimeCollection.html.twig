@@ -1,0 +1,91 @@
+
+{% extends "ShirukizMangaBundle::layout.html.twig" %}
+           
+{% block body %}
+
+        <div id="Accueil">
+            <h1>Anime<a  href="#modal1" id="test" class="modal-trigger">
+                <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+            </a></h1>
+            {% for f in listeanime %}
+                <table style="width: 20%;">
+                    <tr><td><img src="../uploads/img/{{f.image.url}}" alt="Manga" style="width: 100%;"/></td></tr>
+                </table>
+               
+            {% endfor %}
+        </div>
+
+        <div id="Accueil">
+            <h1>Liste</h1>
+            <ul class="collapsible" data-collapsible="accordion">
+                {% for u in user %}
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{ u.username }} 
+                      <a  href="#modal2" id="ajoutanime" class="modal-trigger">
+                        <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+                        </a></div>
+                  <div class="collapsible-body"><span>
+                    {% for statut in listestatut %}
+                        <h1>{{ statut.nom }}</h1>
+                        {% for anime in u.anime %}
+                            {% if manga.statut == statut.nom %}
+                            <table style="width: 20%;">
+                                <tr><td><img src="../uploads/img/{{anime.image.url}}" alt="Manga" style="width: 100%;"/></td></tr>
+                            </table>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}  
+                      </span></div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h1>Ajouter un anime !</h1>
+            {{ form(form)}}
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+        </div>
+      </div>
+        
+        <div id="modal2" class="modal">
+        <div class="modal-content">
+          <h1>Ajouter un anime ?</h1>
+            {{ form(form2)}}
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+        </div>
+      </div>
+    
+    <script type="text/javascript">
+        
+ (function ($) {
+    $(function () {
+
+        //initialize all modals           
+        $('.modal').modal();
+
+        //now you can open modal from code
+        
+
+        //or by click on trigger
+        $('.trigger-modal').modal();
+
+    }); // end of document ready
+})(jQuery);
+
+    $('#test').click(function() {
+        $('#modal1').modal('open');
+    });
+    
+   $('#ajoutanime').click(function() {
+        $('#modal2').modal('open');
+    });
+    </script> 
+    
+{% endblock %}
+

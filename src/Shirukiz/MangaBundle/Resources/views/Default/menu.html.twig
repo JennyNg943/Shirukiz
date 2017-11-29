@@ -1,25 +1,37 @@
-<nav>
-    <ul id="MenuPrincipal">
-        <li>Shirukiz</li>
-        <li class="dropdown"><a href="{{ path ('shirukiz_manga_homepage')}}">Accueil</a></li>
-        <li class="dropdown"><a href="{{ path ('shirukiz_manga_collection')}}">Manga</a></li>
-        <li class="dropdown"><a href="{{ path ('shirukiz_jeux_collection')}}">Jeux Video</a></li>
-        <li class="dropdown"><a href="{{ path ('shirukiz_figurine_collection')}}">Figurine</a></li>
-        <li>Anime</li>
+<div class="topnav" id="myTopnav">
+    <a href="{{ path ('shirukiz_manga_homepage')}}">Accueil</a>
+    <a href="{{ path ('shirukiz_manga_collection')}}">Manga</a>
+    <a href="{{ path ('shirukiz_jeux_collection')}}">Jeux Video</a>
+    <a href="{{ path ('shirukiz_figurine_collection')}}">Figurine</a>
+    <a href="{{ path ('shirukiz_anime_collection')}}">Anime</a>
         
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <li class="dropdown" style="float:right;">
-            <a href="javascript:void(0)" class="dropbtn">    Yahalo {{ app.user.username }}</a>
-            <div class="dropdown-content">
-                <a href="{{ path('fos_user_security_logout') }}" style="font-size: 100%">Déconnexion</a>
-            </div>    
-        </li>
+        <a href="{{ path('fos_user_profile_edit')}}" class="dropbtn">Profil</a>
+        <a href="{{ path('fos_user_security_logout') }}" style="font-size: 100%">Déconnexion</a>    
     {% endif %}
-        <li style="float:right; margin-top: 1%;">
-            <form action="{{ path('recherche') }}"method="GET">
-                <input type="text" name="recherche" />
-                <input type="submit" value="Valider" />
-            </form>
-        </li>
-    </ul>
-</nav>
+        
+           
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    
+    <div class="nav-wrapper">
+        <form action="{{ path('recherche') }}"method="GET">
+          <div class="input-field">
+            <input id="search" type="search" name="recherche" required>
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div> 
+    
+</div>
+              
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>

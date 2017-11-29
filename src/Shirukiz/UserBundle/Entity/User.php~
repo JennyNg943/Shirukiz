@@ -73,38 +73,4 @@ class User extends BaseUser
     {
         return $this->image;
     }
-
-    /**
-     * Add anime
-     *
-     * @param \Shirukiz\AnimeBundle\Entity\AnimeUser $anime
-     *
-     * @return User
-     */
-    public function addAnime(\Shirukiz\AnimeBundle\Entity\AnimeUser $anime)
-    {
-        $this->anime[] = $anime;
-
-        return $this;
-    }
-
-    /**
-     * Remove anime
-     *
-     * @param \Shirukiz\AnimeBundle\Entity\AnimeUser $anime
-     */
-    public function removeAnime(\Shirukiz\AnimeBundle\Entity\AnimeUser $anime)
-    {
-        $this->anime->removeElement($anime);
-    }
-
-    /**
-     * Get anime
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAnime()
-    {
-        return $this->anime;
-    }
 }

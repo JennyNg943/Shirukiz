@@ -30,4 +30,13 @@ class VolumeRepository extends \Doctrine\ORM\EntityRepository
         
         return $qb->getQuery()->getSingleScalarResult();; 
     }
+    
+    public function getVolumeLivre($id){
+        $qb=$this->createQueryBuilder('a');
+        $qb->where('a.idLivre = :id')
+                ->setParameter('id', $id)
+                ->orderBy('a.Volume','ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

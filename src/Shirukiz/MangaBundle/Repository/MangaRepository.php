@@ -17,6 +17,8 @@ class MangaRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
     
+    
+    
     function getRecherche($r){
         $r = "%".$r."%";
         $qb = $this->createQueryBuilder('a');

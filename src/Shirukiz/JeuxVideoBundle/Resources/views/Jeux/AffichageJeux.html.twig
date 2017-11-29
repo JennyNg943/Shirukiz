@@ -1,10 +1,19 @@
-<table  id="Manga" style='width: 20%;'>
+<table  id="Manga" style="width: 19%;margin:0;">
     <tr>
-        <td>
+        <td COLSPAN="2">
             <img src="../uploads/img/{{jeux.image.url}}" alt="Manga" />
         </td>
     </tr>
     <tr>
-        <td>{{ jeux.nom }}</td>
+        <td>
+            {{ jeux.nom}}
+        </td>
+        <td style="width: 2%">
+            <a href="{{ path('jeuxSupp',{'id':jeux.id}) }}" onclick="return confirm('Supprimer ce jeux ?')">
+                {% image 'bundles/img/Supprimer.png' %}
+                    <img src="{{ asset_url }}" alt="Example" style="width: 100%;"/>
+                {% endimage %}
+            </a>
+        </td>
     </tr>
 </table>

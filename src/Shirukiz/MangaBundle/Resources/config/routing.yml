@@ -30,9 +30,18 @@ volume_ajout:
     path:      /Manga/Volume/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:VolumeAjout }
     
+volume_rejet:
+    path:      /Manga/Volume/Enleve/{id}
+    defaults: { _controller: ShirukizMangaBundle:Manga:VolumeRejet }
+    
 volumeSupp:    
     path:      /Manga/Volume/Supp/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:VolumeSupp }
+
 recherche:
     path:      /Recherche
     defaults: { _controller: ShirukizMangaBundle:Default:recherche }
+    
+manga_volume_ajout:
+    path:      /Manga/Ajout/Volume/{id}
+    defaults: { _controller: ShirukizMangaBundle:Menu:VolumeAjout }

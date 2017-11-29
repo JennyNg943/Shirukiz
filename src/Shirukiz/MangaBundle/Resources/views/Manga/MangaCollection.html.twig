@@ -1,40 +1,71 @@
 {# src/Shirukiz/MangaBundle/Resources/views/Manga/MangaCollection.html.twig #}
-{% extends "ShirukizMangaBundle::layout.html.twig" %}
-
+{% extends "ShirukizMangaBundle::layout.html.twig" %}      
+        
 {% block body %}
+    
     {% for statut in listestatut %}
         <div id="Accueil">
-            <h1>{{ statut.nom }}</h1>
+            <h1>{{ statut.nom }} <a  href="#modal1" id="test" class="modal-trigger">
+                <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+            </a></h1>
         {% for manga in listemanga %}
             {% if manga.statut == statut.nom %}
                 <table  id="Manga">
                 <tr>
 
-                    <td COLSPAN="2">
+                    <td>
                         <a href="{{ path('shirukiz_manga_volume',{'id': manga.id })}}"><img src="../uploads/img/{{manga.image.url}}" alt="Manga" /> </a>
                     </td>
                 </tr>
                 <tr>
-                    {% if manga.statut.id == 1 %}
-                        <td style='background:green;width: 2%;color:white;'>
-                    {% else %}        
-                        <td style='background:red;width: 2%;color:white;'>  
-                    {% endif %}
-                        {{ render(controller("ShirukizMangaBundle:Manga:VolumePo",{ 'id': manga.id })) }} / {{ manga.nbVolume }}
+              
+                    <td style="height:10%;">
+                        <div class="progress">
+                            <div class="determinate" style="width: {{ render(controller("ShirukizMangaBundle:Manga:VolumePo",{ 'id': manga.id })) }}%"></div>
+                        </div>
                     </td>
-                    <td><a href="{{ path('shirukiz_manga_img',{'id': manga.id })}}"><img src="../bundles/img/Image.png" alt="Modifier" id="Logo" style="float:left;width: 5%;"/></h1></a>{{ manga.nom }}<a href="{{ path('shirukiz_manga_modifier',{'id': manga.id })}}"><img src="../bundles/img/Modifier.png" alt="Modifier" style="width: 5%;float: right;"/></td>
                 </tr>
                 </table>
+                    
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                      <h1>Ajouter une série !</h1>
+                        {{ form(form)}}
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+                    </div>
+                  </div>
             {% endif %}
         {% endfor %}
-            </td>
-        </tr>
+        </div>
     {% endfor %}
-</div>
+    
 
 
+  
     
     
-    
+    <script type="text/javascript">
+        
+ (function ($) {
+    $(function () {
+
+        //initialize all modals           
+        $('.modal').modal();
+
+        //now you can open modal from code
+        
+
+        //or by click on trigger
+        $('.trigger-modal').modal();
+
+    }); // end of document ready
+})(jQuery);
+
+    $('#test').click(function() {
+        $('#modal1').modal('open');
+    });
+    </script>     
 {% endblock %}
 

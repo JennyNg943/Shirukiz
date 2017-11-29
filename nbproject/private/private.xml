@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/Shirukiz/MangaBundle/Resources/views/Manga/MangaCollection.html.twig</url>
+            <bookmark id="1">
+                <name/>
+                <line>20</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Programme/wamp64/www/Symfony/web/bundles/css/style.css</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/JeuxVideoBundle/Repository/JeuxRepository.php</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Default/MenuPlus.html.twig</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Repository/VolumeRepository.php</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Default/menu.html.twig</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/layout.html.twig</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Manga/MangaAjout.html.twig</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Repository/MangaRepository.php</file>
-            <file>file:/E:/Programme/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Manga/MangaCollection.html.twig</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/layout.html.twig</file>
         </group>
     </open-files>
 </project-private>

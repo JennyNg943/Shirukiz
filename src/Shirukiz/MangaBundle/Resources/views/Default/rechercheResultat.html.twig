@@ -4,40 +4,41 @@
 {% extends "ShirukizMangaBundle::layout.html.twig" %}
 
 {% block body %}
-    <h1>MANGA</h1>
+    <div id="Accueil">
+    <h1>Manga</h1>
     {% if listeManga is not empty %}
         {% for manga in listeManga %}
             <table  id="Manga">
-            <tr>
-                <th COLSPAN="2"><a href="{{ path('shirukiz_manga_img',{'id': manga.id })}}"><img src="../bundles/img/Image.png" alt="Modifier" id="Logo" style="float:left"/></h1></a>{{ manga.nom }}<a href="{{ path('shirukiz_manga_modifier',{'id': manga.id })}}"><img src="../bundles/img/Modifier.png" alt="Modifier" id="Logo"/></th>
-            </tr>
+                <tr>
 
-            <tr>
-
-                <td COLSPAN="2">
-                    <a href="{{ path('shirukiz_manga_volume',{'id': manga.id })}}"><img src="../uploads/img/{{manga.image.url}}" alt="Manga" /> </a>
-                </td>
-            </tr>
-            <tr>
-                <td>{{ manga.auteur }}</td>
-                <td>{{ manga.statut }}</td>
-            </tr>
-            </table>
+                    <td>
+                        <a href="{{ path('shirukiz_manga_volume',{'id': manga.id })}}"><img src="../uploads/img/{{manga.image.url}}" alt="Manga" /> </a>
+                    </td>
+                </tr>
+                <tr>
+              
+                    <td>
+                        <div class="progress">
+                            <div class="determinate" style="width: {{ render(controller("ShirukizMangaBundle:Manga:VolumePo",{ 'id': manga.id })) }}%"></div>
+                        </div>
+                    </td>
+                </tr>
+                </table>
         {% endfor %}
     {% else %}
         Nada... O_O
     {% endif %}
-    <h1>JEUX</h1>
+    <h1>Jeux</h1>
     {% if listeJeux is not empty %}
         {% for jeux in listeJeux %}
-                {% if jeux.plateforme == plateform.nom %}
+                
                     {{ include("ShirukizJeuxVideoBundle:Jeux:AffichageJeux.html.twig") }}
-                {% endif %} 
+                 
                
             {% endfor %}
     {% else %}
         Nada... O_O
     {% endif %}
     
-    
+    </div>
 {% endblock %}

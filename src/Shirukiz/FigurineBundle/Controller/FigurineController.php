@@ -10,17 +10,10 @@ use Shirukiz\FigurineBundle\Entity\Figurine;
 
 class FigurineController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $repository=$this->getDoctrine()->getManager()->getRepository('ShirukizFigurineBundle:Figurine');
-        $figurine = $repository->getFigurine();
-        
-        return $this->render('ShirukizFigurineBundle:Figurine:FigurineCollection.html.twig',array(
-            'listefigurine'=>$figurine,
-        ));
-    }
-    
-    public function ajoutAction(Request $request){
+        $figurin = $repository->getFigurine();
         $figurine = new Figurine();
         $form = $this->createForm(FigurineType::class, $figurine);
         
@@ -29,8 +22,10 @@ class FigurineController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($figurine);
             $em->flush();
-            return $this->redirectToRoute('shirukiz_figurine_collection');
         }
-        return $this->render('ShirukizFigurineBundle:Figurine:FigurineAjout.html.twig',array('form'=>$form->createView()));
+        return $this->render('ShirukizFigurineBundle:Figurine:FigurineCollection.html.twig',array(
+            'listefigurine'=>$figurin,
+            'form'=>$form->createView()
+        ));
     }
 }

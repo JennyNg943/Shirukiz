@@ -1,31 +1,26 @@
 
 {% extends "ShirukizMangaBundle::layout.html.twig" %}
-{% block header %}
-    {% if livre.imageBanniere != null %}
-        <header style="background-image: url(../../uploads/img/{{livre.imageBanniere.url}})">
-            <a href="{{ path('shirukiz_manga_imgBan',{'id': livre.id })}}"><img src="../../bundles/img/Image.png" alt="Modifier" id="Logo"/></a>
-       
-        {% block title %}
-        {% endblock %}
-        
-        </header>
-    {% else %}
-        <a href="{{ path('shirukiz_manga_imgBan',{'id': livre.id })}}"><img src="../../bundles/img/Image.png" alt="Modifier" id="Logo"/></a>
-    {% endif %}
-     
-    {% endblock %} 
+    
 {% block body %}
-    <h2>{{ livre.nom }}</h2>
-        <div id="Accueil">
-            <h1>Volumes</h1>
-            <div class="count">
-                Nombre total de volumes : {{ paginator.getTotalItemCount }}
-            </div>                
+    <div id="Accueil" style="background-image: url(../../uploads/img/{{livre.imageBanniere.url}});background-size: 100%;padding: 4%;text-align: center;background-repeat:no-repeat;background-color:transparent">
+        <h2 style="margin-top:0;color:white;text-shadow:0 0 3px black">{{ livre.nom }}
+            <a  href="#modal3" id="modifierBan" class="modal-trigger">
+                <img src="../bundles/img/Image.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+            </a></h2>
+        
+    </div>
+        <div id="Accueil" style="float: right;margin-right: 2%;">
+            <h1>Volumes <a  href="#modal1" id="test" class="modal-trigger">
+                <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+            </a></h1>             
             {% for volume in paginator %}
                 <table id="Volume">
                     <tr>
                         {% if volume.possession == 1 %}
-                        <td><img src="../../uploads/img/{{volume.image.url}}" alt="Volume" /></td> 
+                        <td>
+                            <a href="{{ path('volume_rejet',{'id':volume.id}) }}" onclick="return confirm('Enlever ce volume ?')">
+                                <img src="../../uploads/img/{{volume.image.url}}" alt="Volume" /></td> 
+                            </a>
                         {% else %}
                         <td>
                             <a href="{{ path('volume_ajout',{'id':volume.id}) }}" onclick="return confirm('Ajouter ce volume ?')">
@@ -45,16 +40,17 @@
                     </tr>
                 </table>
            {% endfor %}
-            <div class="navigation" style="float:right">
-                {{ knp_pagination_render(paginator) }}
-            </div></td>
         </div>
 
         <div id="Accueil">
             <h1>Présentation
-                <a href="{{ path('shirukiz_manga_modifier',{'id': livre.id })}}">
-                    <img src="../../bundles/img/Modifier.png" alt="Modifier" id="Logo"/>
-                </a></h1>
+                <a  href="#modal2" id="modifier" class="modal-trigger">
+                    <img src="../bundles/img/Modifier.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+                </a>
+                <a  href="#modal4" id="modifierImage" class="modal-trigger">
+                    <img src="../bundles/img/Image.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+                </a>
+            </h1>
               
             <div> 
                 <b>Genre : </b>{{ livre.genre }}
@@ -71,10 +67,81 @@
             <div>  
                 <b>Description : </b></br>{{ livre.description }}
             </div>  
+        </div>  
+            
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h1>Ajouter un volume !</h1>
+                {{ form(form)}}
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+            </div>
+        </div>
+            
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+             <h1>Modifier ce manga</h1>
+                {{ form(form2) }}
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+            </div>
+        </div>
+            
+        <div id="modal3" class="modal">
+            <div class="modal-content">
+             <h1>Modifier la banniere</h1>
+                {{ form(form3) }}
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+            </div>
+        </div>
+            
+        <div id="modal4" class="modal">
+            <div class="modal-content">
+             <h1>Modifier l'image</h1>
+                {{ form(form4) }}
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+            </div>
         </div>    
-                
-        </tr>
+            
+    <script type="text/javascript">
+        
+ (function ($) {
+    $(function () {
+
+        //initialize all modals           
+        $('.modal').modal();
+
+        //now you can open modal from code
+        
+
+        //or by click on trigger
+        $('.trigger-modal').modal();
+
+    }); // end of document ready
+})(jQuery);
+
+    $('#test').click(function() {
+        $('#modal1').modal('open');
+    });
     
+    $('#modifier').click(function() {
+        $('#modal2').modal('open');
+    });
+    
+    $('#modifierBan').click(function() {
+        $('#modal3').modal('open');
+    });
+    
+    $('#modifierImage').click(function() {
+        $('#modal4').modal('open');
+    });
+    </script>  
                     
     
     
