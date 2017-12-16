@@ -1,7 +1,0 @@
-shirukiz_jeux_collection:
-    path:     /JeuxVideo
-    defaults: { _controller: ShirukizJeuxVideoBundle:JeuxVideo:index }
-   
-jeuxSupp:
-    path:     /JeuxVideo/Supp/{id}
-    defaults: { _controller: ShirukizJeuxVideoBundle:JeuxVideo:delete }

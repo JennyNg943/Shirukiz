@@ -1,3 +1,0 @@
-shirukiz_anime_collection:
-    path:     /Anime
-    defaults: { _controller: ShirukizAnimeBundle:Default:index }

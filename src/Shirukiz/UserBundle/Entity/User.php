@@ -36,7 +36,7 @@ class User extends BaseUser
      *
      * @var integer
      * 
-     * @ORM\OneToMany(targetEntity="Shirukiz\AnimeBundle\Entity\AnimeUser", mappedBy="idUser")
+     * @ORM\OneToMany(targetEntity="Shirukiz\MangaBundle\Entity\AnimeUser", mappedBy="idUser")
      */
     protected $anime;
     
@@ -81,7 +81,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function addAnime(\Shirukiz\AnimeBundle\Entity\AnimeUser $anime)
+    public function addAnime(\Shirukiz\MangaBundle\Entity\AnimeUser $anime)
     {
         $this->anime[] = $anime;
 
@@ -93,7 +93,7 @@ class User extends BaseUser
      *
      * @param \Shirukiz\AnimeBundle\Entity\AnimeUser $anime
      */
-    public function removeAnime(\Shirukiz\AnimeBundle\Entity\AnimeUser $anime)
+    public function removeAnime(\Shirukiz\MangaBundle\Entity\AnimeUser $anime)
     {
         $this->anime->removeElement($anime);
     }

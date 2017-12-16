@@ -18,7 +18,7 @@ class DefaultController extends Controller
         }else{
             
             $repository = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Volume');
-            $repository2 = $this->getDoctrine()->getManager()->getRepository('ShirukizJeuxVideoBundle:Jeux');
+            $repository2 = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Jeux');
             
             $livre = $repository->getVolumeA();
             $jeux = $repository2->getJeuxA();

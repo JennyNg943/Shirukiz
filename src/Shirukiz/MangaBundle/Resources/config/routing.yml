@@ -1,47 +1,78 @@
+#-----------------------------------------------------------------------------Defaut-------------------------------------------------------------------------------------------
+
 shirukiz_manga_homepage:
-    path:     /
+    path:     /private
     defaults: { _controller: ShirukizMangaBundle:Default:index }
 
+
+recherche:
+    path:      /private/Recherche
+    defaults: { _controller: ShirukizMangaBundle:Default:recherche }
+    
+#-----------------------------------------------------------------------------Manga-------------------------------------------------------------------------------------------
+
 shirukiz_manga_collection:
-    path:     /Manga
+    path:     /private/Manga
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaCollection }
     
 shirukiz_manga_ajout:
-    path:     /Manga/Ajout
+    path:     /private/Manga/Ajout
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaAjout }
 
 shirukiz_manga_modifier:
-    path:     /Manga/Modif/{id}
+    path:     /private/Manga/Modif/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaModifier }  
   
 shirukiz_manga_volume:
-    path:      /Manga/{id}
+    path:      /private/Manga/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaVolume }
     
 shirukiz_manga_imgBan:
-    path:      /Manga/Banniere/{id}
+    path:      /private/Manga/Banniere/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaBanniere }
     
 shirukiz_manga_img:
-    path:      /Manga/Image/{id}
+    path:      /private/Manga/Image/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaImage }
     
 volume_ajout:
-    path:      /Manga/Volume/{id}
+    path:      /private/Manga/Volume/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:VolumeAjout }
     
 volume_rejet:
-    path:      /Manga/Volume/Enleve/{id}
+    path:      /private/Manga/Volume/Enleve/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:VolumeRejet }
     
 volumeSupp:    
-    path:      /Manga/Volume/Supp/{id}
+    path:      /private/Manga/Volume/Supp/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:VolumeSupp }
-
-recherche:
-    path:      /Recherche
-    defaults: { _controller: ShirukizMangaBundle:Default:recherche }
     
 manga_volume_ajout:
-    path:      /Manga/Ajout/Volume/{id}
+    path:      /private/Manga/Ajout/Volume/{id}
     defaults: { _controller: ShirukizMangaBundle:Menu:VolumeAjout }
+    
+#-----------------------------------------------------------------------------Jeux-------------------------------------------------------------------------------------------
+
+shirukiz_jeux_collection:
+    path:     /private/JeuxVideo
+    defaults: { _controller: ShirukizMangaBundle:JeuxVideo:index }
+   
+jeuxSupp:
+    path:     /private/JeuxVideo/Supp/{id}
+    defaults: { _controller: ShirukizMangaBundle:JeuxVideo:delete }
+    
+#---------------------------------------------------------------------------Figurine------------------------------------------------------------------------------------------   
+    
+shirukiz_figurine_collection:
+    path:     /private/Figurine
+    defaults: { _controller: ShirukizMangaBundle:Figurine:index }
+    
+shirukiz_figurine_ajout:
+    path:     /private/Figurine/Ajout
+    defaults: { _controller: ShirukizMangaBundle:Figurine:ajout }
+    
+#---------------------------------------------------------------------------Anime------------------------------------------------------------------------------------------   
+
+shirukiz_anime_collection:
+    path:     /private/Anime
+    defaults: { _controller: ShirukizMangaBundle:Anime:index }

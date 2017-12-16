@@ -1,4 +1,0 @@
-services:
-#    shirukiz_figurine.example:
-#        class: Shirukiz\FigurineBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

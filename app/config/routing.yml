@@ -2,18 +2,6 @@ shirukiz_user:
     resource: "@ShirukizUserBundle/Resources/config/routing.yml"
     prefix:   /
 
-shirukiz_anime:
-    resource: "@ShirukizAnimeBundle/Resources/config/routing.yml"
-    prefix:   /
-
-shirukiz_figurine:
-    resource: "@ShirukizFigurineBundle/Resources/config/routing.yml"
-    prefix:   /
-
-shirukiz_jeux_video:
-    resource: "@ShirukizJeuxVideoBundle/Resources/config/routing.yml"
-    prefix:   /
-
 shirukin_manga:
     resource: "@ShirukizMangaBundle/Resources/config/routing.yml"
     prefix:   /
