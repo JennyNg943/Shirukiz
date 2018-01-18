@@ -1,16 +1,4 @@
 <div class="topnav" id="myTopnav">
-    <a href="{{ path ('shirukiz_manga_homepage')}}">Accueil</a>
-    <a href="{{ path ('shirukiz_manga_collection')}}">Manga</a>
-    <a href="{{ path ('shirukiz_jeux_collection')}}">Jeux Video</a>
-    <a href="{{ path ('shirukiz_figurine_collection')}}">Figurine</a>
-    <a href="{{ path ('shirukiz_anime_collection')}}">Anime</a>
-        
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <a href="{{ path('fos_user_profile_edit')}}" class="dropbtn">Profil</a>
-        <a href="{{ path('fos_user_security_logout') }}" style="font-size: 100%">Déconnexion</a>    
-    {% endif %}
-        
-           
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     
     <div class="nav-wrapper">
@@ -22,6 +10,24 @@
           </div>
         </form>
       </div> 
+
+    
+    
+    <a href="{{ path ('shirukiz_manga_homepage')}}">Accueil</a>
+    <a href="{{ path ('shirukiz_manga_collection')}}">Manga</a>
+    <a href="{{ path ('shirukiz_jeux_collection')}}">Jeux Video</a>
+    <a href="{{ path ('shirukiz_figurine_collection')}}">Figurine</a>
+    <a href="{{ path ('shirukiz_anime_collection')}}">Anime</a>
+    <a href="{{ path ('shirukiz_figurine_collection')}}">Dessin</a>
+    <a href="{{ path ('shirukiz_anime_collection')}}" style="margin-bottom: 50%;">Tricot</a>    
+    
+        
+    
+             
+    <a href="{{ path('fos_user_profile_edit')}}" class="dropbtn">Profil</a>
+    <a href="{{ path('fos_user_security_logout') }}" style="font-size: 100%;color: #FFB6C1;">Déconnexion</a>  
+    
+    
     
 </div>
               

@@ -1,12 +1,12 @@
 
 {% extends "ShirukizMangaBundle::layout.html.twig" %}
 {% block body %}
-    
+    <h3>Collection Jeux  <a  href="#modal1" id="test" class="modal-trigger">
+                <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
+            </a></h3>
          {% for plateform in listePlateforme %}
         <div id="Accueil">     
-         <h1>{{ plateform.nom }} <a  href="#modal1" id="test" class="modal-trigger">
-                <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
-            </a></h1>
+         <h1>{{ plateform.nom }}</h1>
          {% for jeux in listejeux %}
              {% if jeux.plateforme == plateform.nom %}
                  {{ include("ShirukizMangaBundle:Jeux:AffichageJeux.html.twig") }}

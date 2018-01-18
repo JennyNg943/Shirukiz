@@ -7,15 +7,15 @@
 {% endblock %}
 
 {% block body %}
+    
     <div id="Accueil">
+        <h3>Nouveauté</h3>
         <h1>Dernier mangas achetés !</h1>
         <div id="AccueilImg">
             {% for l in livre %}
                 <img src="../uploads/img/{{l.image.url}}" alt="Volume" />
             {% endfor %}
         </div>
-    </div>
-    <div id="Accueil">
         <h1>Dernier jeux achetés !</h1>
         <div id="AccueilImg">
             {% for j in jeux %}

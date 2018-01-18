@@ -31,11 +31,6 @@ class MangaAjoutType extends AbstractType
                   'choice_label'=>'nom',
                   'placeholder'=>''
             ))
-        ->add('type',       EntityType::class,array(
-                  'class'=>'ShirukizMangaBundle:Type',
-                  'choice_label'=>'nom',
-                  'placeholder'=>''
-            ))
         ->add('editeur',    EntityType::class,array(
                   'class'=>'ShirukizMangaBundle:Editeur',
                   'choice_label'=>'nom',

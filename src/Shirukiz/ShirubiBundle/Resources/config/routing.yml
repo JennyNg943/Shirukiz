@@ -1,0 +1,3 @@
+shirubi_homepage:
+    path:     /
+    defaults: { _controller: ShirubiBundle:Default:index }

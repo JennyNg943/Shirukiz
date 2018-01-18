@@ -10,4 +10,5 @@ namespace Shirukiz\MangaBundle\Repository;
  */
 class ImageRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

@@ -1,3 +1,9 @@
+shirukiz_shirubi:
+    resource: "@ShirukizShirubiBundle/Resources/config/routing.xml"
+    prefix:   /
+
+
+
 shirukiz_user:
     resource: "@ShirukizUserBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,203 @@
+<?php
+
+namespace Shirukiz\ShirubiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+/**
+ * ImageShirubi
+ *
+ * @ORM\Table(name="imageShirubi")
+ * @ORM\Entity(repositoryClass="Shirukiz\ShirubiBundle\Repository\ImageShirubiRepository")
+ */
+class ImageShirubi
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt", type="string", length=255)
+     */
+    private $alt;
+    
+    private $file;
+    
+    /**
+     * @var Date
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+    
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Shirukiz\MangaBundle\Entity\Type")
+     */
+    private $type;
+
+  
+
+    public function getFile()
+    {
+      return $this->file;
+    }
+
+    public function setFile(UploadedFile $file = null)
+    {
+      $this->file = $file;
+    }
+    
+    public function upload()
+    {
+        // Si jamais il n'y a pas de fichier (champ facultatif), on ne fait rien
+        if (null === $this->file) {
+          return;
+        }
+        // On récupère le nom original du fichier de l'internaute
+        $name = $this->file->getClientOriginalName();
+        // On déplace le fichier envoyé dans le répertoire de notre choix
+        $this->file->move($this->getUploadRootDir(), $name);
+        // On sauvegarde le nom de fichier dans notre attribut $url
+        $this->url = $name;
+        // On crée également le futur attribut alt de notre balise <img>
+        $this->alt = $name;
+     }
+
+
+    public function getUploadDir()
+    {
+      // On retourne le chemin relatif vers l'image pour un navigateur (relatif au répertoire /web donc)
+      return 'uploads/imgShirubi';
+    }
+
+
+    protected function getUploadRootDir()
+    {
+      // On retourne le chemin relatif vers l'image pour notre code PHP
+      return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return ImageShirubi
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set alt
+     *
+     * @param string $alt
+     *
+     * @return ImageShirubi
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    /**
+     * Get alt
+     *
+     * @return string
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+    
+   
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return ImageShirubi
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Shirukiz\MangaBundle\Entity\Type $type
+     *
+     * @return ImageShirubi
+     */
+    public function setType(\Shirukiz\MangaBundle\Entity\Type $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Shirukiz\MangaBundle\Entity\Type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+}

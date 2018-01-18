@@ -12,11 +12,18 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Form/AnimeAjoutType.php</file>
-            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Form/AnimeListeType.php</file>
-            <file>file:/C:/wamp64/www/Symfony/app/config/security.yml</file>
-            <file>file:/C:/wamp64/www/Symfony/app/config/config.yml</file>
-            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Repository/JeuxRepository.php</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/wamp64/www/Symfony/web/bundles/css/materialize.css</file>
+            <file>file:/C:/wamp64/www/Symfony/web/bundles/css/style.css</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Controller/MangaController.php</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Jeux/AffichageJeux.html.twig</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Repository/VolumeRepository.php</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Manga/MangaCollection.html.twig</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Default/rechercheResultat.html.twig</file>
+            <file>file:/C:/wamp64/www/Symfony/src/Shirukiz/MangaBundle/Resources/views/Default/menu.html.twig</file>
         </group>
     </open-files>
 </project-private>

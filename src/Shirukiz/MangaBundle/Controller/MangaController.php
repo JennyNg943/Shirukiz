@@ -18,14 +18,14 @@ class MangaController extends Controller
     public function MangaCollectionAction(Request $request)
     {
         $repository=$this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Livre');
-        $repository2=$this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Statut');
+        $repository2=$this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Type');
         $manga = $repository->getManga();
-        $statut = $repository2->getStatut();
-        
+        $type = $repository2->find(1);
         $livre = new Livre();
         $form = $this->createForm(MangaAjoutType::class, $livre);
         
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $livre->setType($type);
             $livre->getImage()->upload();
             $livre->getImageBanniere()->upload();
             $em = $this->getDoctrine()->getManager();
@@ -35,9 +35,10 @@ class MangaController extends Controller
             return $this->redirectToRoute('shirukiz_manga_volume',array('id'=>$livre->getId()));
         }
         
+         
+        
         return $this->render('ShirukizMangaBundle:Manga:MangaCollection.html.twig',array(
             'listemanga'=>$manga,
-            'listestatut'=>$statut,
             'form'=>$form->createView()
         ));
     }

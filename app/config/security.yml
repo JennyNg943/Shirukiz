@@ -21,7 +21,7 @@ security:
             provider:       main
             form_login:
                 login_path: fos_user_security_login
-                default_target_path: /
+                default_target_path: /private
             logout:
                 path:       fos_user_security_logout
                 target:     /

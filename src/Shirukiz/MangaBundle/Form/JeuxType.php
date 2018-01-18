@@ -29,8 +29,6 @@ class JeuxType extends AbstractType
                   'class'=>'ShirukizMangaBundle:Plateforme',
                   'choice_label'=>'nom'
             ))
-        ->add('genre',          TextType::class)
-        ->add('multijoueur',    TextType::class)
         ->add('image',      ImageType::class)
         ->add('Confirmer',      SubmitType::class);
   }

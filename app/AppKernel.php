@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Debril\RssAtomBundle\DebrilRssAtomBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Shirukiz\ShirubiBundle\ShirukizShirubiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

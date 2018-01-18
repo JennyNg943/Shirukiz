@@ -30,7 +30,7 @@ class DefaultController extends Controller
     public function rechercheAction(Request $request){
         $Recherche = $request->get('recherche');
         $repository = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Livre');
-        $repository2 = $this->getDoctrine()->getManager()->getRepository('ShirukizJeuxVideoBundle:Jeux');
+        $repository2 = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Jeux');
         $liste1 = $repository->getRecherche($Recherche);
         $liste2 = $repository2->getRecherche($Recherche);
         return $this->render('ShirukizMangaBundle:Default:rechercheResultat.html.twig',array(

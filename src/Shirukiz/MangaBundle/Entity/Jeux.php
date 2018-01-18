@@ -43,7 +43,7 @@ class Jeux
     /**
      * @var string
      *
-     * @ORM\Column(name="Genre", type="string", length=255)
+     * @ORM\Column(name="Genre", type="string", length=255,nullable=true)
      */
     private $genre;
     /**

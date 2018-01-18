@@ -20,7 +20,7 @@ class MangaRepository extends \Doctrine\ORM\EntityRepository
     
     
     function getRecherche($r){
-        $r = "%".$r."%";
+        $r = $r."%";
         $qb = $this->createQueryBuilder('a');
         $qb
             ->where('a.nom LIKE :r ')
