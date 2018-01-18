@@ -49,7 +49,7 @@ class Jeux
     /**
      * @var string
      *
-     * @ORM\Column(name="Multijoueur", type="string", length=255)
+     * @ORM\Column(name="Multijoueur", type="string", length=255,nullable=true)
      */
     private $multijoueur;
     
