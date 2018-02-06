@@ -4,10 +4,42 @@
 {% block body %}
     
     <div id="Accueil">
-        <h3>Collection Manga <a  href="#modal1" id="test" class="modal-trigger">
+        <h3>Collection {{type.nom}} <a  href="#modal1" id="test" class="modal-trigger">
                 <img src="../bundles/img/Ajouter.png" alt="Modifier" id="Logo" style="float:right;width: 4%;"/>
             </a></h3>
-        
+        <h1>0</h1>
+        {% for manga in listemanga %}
+            {% if manga.nom|truncate(1, false,'') == '0'%}
+                <table  id="Manga">
+                <tr>
+
+                    <td>
+                        <a href="{{ path('shirukiz_manga_volume',{'id': manga.id })}}"><img src="../uploads/img/{{manga.image.url}}" alt="{{ manga.nom }}" /> </a>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td style="height:10%;">
+                        {% if manga.statut == "Terminé" %}
+                            <div class="progress" style="background-color:#B3FF99">
+                                <div class="determinate" style="background-color:#52FF20;width: {{ render(controller("ShirukizMangaBundle:Manga:VolumePo",{ 'id': manga.id })) }}%"></div>
+                            </div>
+                        {% endif %}    
+                        {% if manga.statut == "En cours" %} 
+                            <div class="progress" style="background-color:#FFBBBB">
+                                <div class="determinate" style="background-color:#FF4848;width: {{ render(controller("ShirukizMangaBundle:Manga:VolumePo",{ 'id': manga.id })) }}%"></div>
+                            </div>
+                        {% endif %}
+                        {% if manga.statut == "En pause" %}    
+                            <div class="progress">
+                                <div class="determinate" style="width: {{ render(controller("ShirukizMangaBundle:Manga:VolumePo",{ 'id': manga.id })) }}%"></div>
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+                </table>
+            {% endif %}
+        {% endfor %}
     {% for i in (range('A','Z'))%}
         <h1>{{ i }} </h1>
         {% for manga in listemanga %}
@@ -71,6 +103,9 @@
 
         //now you can open modal from code
         
+        $("#test").on('click', function(){
+            $('#modal1').modal('open');
+        });
 
         //or by click on trigger
         $('.trigger-modal').modal();

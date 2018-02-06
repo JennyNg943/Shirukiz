@@ -13,14 +13,14 @@ use Shirukiz\MangaBundle\Form\MangaImgBanType;
 use Shirukiz\MangaBundle\Form\MangaImgType;
 use Symfony\Component\HttpFoundation\Response;
 
-class MangaController extends Controller
+class LightNovelController extends Controller
 {
-    public function MangaCollectionAction(Request $request)
+    public function LightNovelCollectionAction(Request $request)
     {
         $repository=$this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Livre');
         $repository2=$this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Type');
-        $manga = $repository->getManga();
-        $type = $repository2->find(1);
+        $manga = $repository->getLightNovel();
+        $type = $repository2->find(2);
         $livre = new Livre();
         $form = $this->createForm(MangaAjoutType::class, $livre);
         
@@ -89,6 +89,21 @@ class MangaController extends Controller
             'form2' =>$form2->createView(),
             'form3' =>$form3->createView(),
             'form4' =>$form4->createView()));
+    }
+    
+    public function MangaImageAction(Request $request,$id){
+        $repository = $this->getDoctrine()->getManager()->getRepository('ShirukizMangaBundle:Livre');
+        $manga = $repository->find($id);
+        $form = $this->createForm(MangaImgType::class, $manga);
+ 
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $manga->getImage()->upload();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($manga);
+            $em->flush();
+        }
+        return $this->render('ShirukizMangaBundle:Manga:MangaModifier.html.twig',array('form'=>$form->createView()));
+        
     }
     
     public function VolumeAjoutAction($id,Request $request){

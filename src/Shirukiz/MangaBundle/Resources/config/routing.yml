@@ -14,27 +14,11 @@ recherche:
 shirukiz_manga_collection:
     path:     /private/Manga
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaCollection }
-    
-shirukiz_manga_ajout:
-    path:     /private/Manga/Ajout
-    defaults: { _controller: ShirukizMangaBundle:Manga:MangaAjout }
 
-shirukiz_manga_modifier:
-    path:     /private/Manga/Modif/{id}
-    defaults: { _controller: ShirukizMangaBundle:Manga:MangaModifier }  
-  
 shirukiz_manga_volume:
     path:      /private/Manga/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:MangaVolume }
-    
-shirukiz_manga_imgBan:
-    path:      /private/Manga/Banniere/{id}
-    defaults: { _controller: ShirukizMangaBundle:Manga:MangaBanniere }
-    
-shirukiz_manga_img:
-    path:      /private/Manga/Image/{id}
-    defaults: { _controller: ShirukizMangaBundle:Manga:MangaImage }
-    
+         
 volume_ajout:
     path:      /private/Manga/Volume/{id}
     defaults: { _controller: ShirukizMangaBundle:Manga:VolumeAjout }
@@ -50,6 +34,12 @@ volumeSupp:
 manga_volume_ajout:
     path:      /private/Manga/Ajout/Volume/{id}
     defaults: { _controller: ShirukizMangaBundle:Menu:VolumeAjout }
+    
+#-----------------------------------------------------------------------------LightNovel-------------------------------------------------------------------------------------------
+
+shirukiz_ln_collection:
+    path:     /private/LightNovel
+    defaults: { _controller: ShirukizMangaBundle:LightNovel:LightNovelCollection }
     
 #-----------------------------------------------------------------------------Jeux-------------------------------------------------------------------------------------------
 

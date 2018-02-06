@@ -12,11 +12,23 @@ class MangaRepository extends \Doctrine\ORM\EntityRepository
 {
     public function getManga(){
         $qb=$this->createQueryBuilder('a');
-        $qb->orderBy('a.nom','ASC');
-
+        $qb->orderBy('a.nom','ASC')
+            ->where('a.type = :id')
+            ->setParameter('id', 1)
+                ;
+            
         return $qb->getQuery()->getResult();
     }
     
+    public function getLightNovel(){
+        $qb=$this->createQueryBuilder('a');
+        $qb->orderBy('a.nom','ASC')
+            ->where('a.type = :id')
+            ->setParameter('id', 2)
+                ;
+            
+        return $qb->getQuery()->getResult();
+    }
     
     
     function getRecherche($r){
